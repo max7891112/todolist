@@ -1,6 +1,6 @@
 import React from "react";
-import { TaskType } from "./App";
-import { FilterValuesType } from "./App";
+import { TaskType } from "./AppWithRedux";
+import { FilterValuesType } from "./AppWithRedux";
 import { AddItemForm } from "./addItemForm";
 import { EditableSpan } from "./EditableSpan";
 import IconButton from "@mui/material/IconButton";
@@ -68,7 +68,9 @@ export const ToDolist: React.FC<{
       <AddItemForm addItem={addItem}></AddItemForm>
       <ul>
         {tasks.map((task) => {
-          const onRemoveHandler = () => removeTask(task.id, id);
+          const onRemoveHandler = () => {
+            removeTask(task.id, id);
+          };
           const onChangeTitleHandler = (newValue: string) => {
             changeTaskTitle(newValue, task.id, id);
           };
